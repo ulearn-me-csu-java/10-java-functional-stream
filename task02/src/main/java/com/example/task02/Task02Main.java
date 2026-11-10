@@ -15,9 +15,14 @@ public class Task02Main {
     }
 
     public static IntStream cycleGrayCode(int n) {
+        if (n < 1 || n > 16) {
+            throw new IllegalArgumentException("Битность n должна быть в диапазоне от 1 до 16");
+        }
 
-        return null; // your implementation here
+        int total = 1 << n;
 
+        return IntStream.iterate(0, i -> (i + 1) % total)
+                .map(i -> i ^ (i >> 1));
     }
 
 }
