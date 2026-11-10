@@ -1,6 +1,5 @@
 package com.example.task05;
 
-import com.example.task05.ITests;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -47,7 +46,7 @@ public class TestsImpl implements ITests {
         );
 
         // Создание почтового сервиса.
-        MailService<String> mailService = new MailService<>();
+        mailService<String> mailService = new mailService<>();
 
         // Обработка списка писем почтовым сервисом
         messages.stream().forEachOrdered(mailService);
@@ -78,7 +77,7 @@ public class TestsImpl implements ITests {
         Salary salary3 = new Salary(randomFrom, randomTo, randomSalary);
 
         // Создание почтового сервиса, обрабатывающего зарплаты.
-        MailService<Integer> salaryService = new MailService<>();
+        mailService<Integer> salaryService = new mailService<>();
 
         // Обработка списка зарплат почтовым сервисом
         Arrays.asList(salary1, salary2, salary3).forEach(salaryService);

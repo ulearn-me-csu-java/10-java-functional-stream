@@ -9,7 +9,7 @@ public class Task05Main {
 
     public static void main(String[] args) {
 
-        /*
+
 
         // Random variables
         String randomFrom = "..."; // Некоторая случайная строка. Можете выбрать ее самостоятельно.
@@ -44,7 +44,7 @@ public class Task05Main {
         );
 
         // Создание почтового сервиса.
-        MailService<String> mailService = new MailService<>();
+        mailService<String> mailService = new mailService<>();
 
         // Обработка списка писем почтовым сервисом
         messages.stream().forEachOrdered(mailService);
@@ -75,7 +75,7 @@ public class Task05Main {
         Salary salary3 = new Salary(randomFrom, randomTo, randomSalary);
 
         // Создание почтового сервиса, обрабатывающего зарплаты.
-        MailService<Integer> salaryService = new MailService<>();
+        mailService<Integer> salaryService = new mailService<>();
 
         // Обработка списка зарплат почтовым сервисом
         Arrays.asList(salary1, salary2, salary3).forEach(salaryService);
@@ -88,7 +88,7 @@ public class Task05Main {
         assert salaries.get(randomTo).equals(Arrays.asList(randomSalary)) : "wrong salaries mailbox content (3)";
 
 
-        */
+
 
     }
 
