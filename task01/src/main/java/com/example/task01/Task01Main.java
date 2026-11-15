@@ -12,6 +12,7 @@ public class Task01Main {
         Function<Object, Integer> ifTrue = obj -> 0;
         Function<CharSequence, Integer> ifFalse = CharSequence::length;
         Function<String, Integer> safeStringLength = ternaryOperator(condition, ifTrue, ifFalse);
+        safeStringLength.apply("Hello");
     }
 
     public static <T, U> Function<T, U> ternaryOperator(
@@ -19,6 +20,7 @@ public class Task01Main {
             Function<? super T, ? extends U> ifTrue,
             Function<? super T, ? extends U> ifFalse) {
 
+        //проверка на null
         Objects.requireNonNull(condition);
         Objects.requireNonNull(ifTrue);
         Objects.requireNonNull(ifFalse);

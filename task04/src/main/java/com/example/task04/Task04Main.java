@@ -19,6 +19,7 @@ public class Task04Main {
                     .map(String::toLowerCase)
                     .filter(word -> !word.isEmpty())
                     .collect(Collectors.groupingBy(word -> word, Collectors.counting()));
+
             frequencyMap.entrySet().stream()
                     .sorted(
                             Comparator.comparing(Map.Entry<String, Long>::getValue, Comparator.reverseOrder())
