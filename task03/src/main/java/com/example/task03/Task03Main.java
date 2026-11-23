@@ -17,11 +17,35 @@ public class Task03Main {
 
     }
 
+
     public static <T> void findMinMax(
             Stream<? extends T> stream,
             Comparator<? super T> order,
             BiConsumer<? super T, ? super T> minMaxConsumer) {
 
-        // your implementation here
+        java.util.Iterator<? extends T> iterator = stream.iterator();
+
+        if (!iterator.hasNext()) {
+            minMaxConsumer.accept(null, null);
+            return;
+        }
+
+        T min = iterator.next();
+        T max = min;
+
+        while (iterator.hasNext()) {
+            T value = iterator.next();
+
+            if (order.compare(value, min) < 0) {
+                min = value;
+            }
+
+            if (order.compare(value, max) > 0) {
+                max = value;
+            }
+        }
+
+        minMaxConsumer.accept(min, max);
     }
+
 }
