@@ -3,6 +3,7 @@ package com.example.task01;
 import java.io.IOException;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.Objects;
 
 public class Task01Main {
     public static void main(String[] args) throws IOException {
@@ -23,7 +24,16 @@ public class Task01Main {
             Function<? super T, ? extends U> ifTrue,
             Function<? super T, ? extends U> ifFalse) {
 
-        return null; // your implementation here
+        Objects.requireNonNull(condition);
+        Objects.requireNonNull(ifTrue);
+        Objects.requireNonNull(ifFalse);
 
+        return value -> {
+            if (condition.test(value)) {
+                return ifTrue.apply(value);
+            } else {
+                return ifFalse.apply(value);
+            }
+        };
     }
 }

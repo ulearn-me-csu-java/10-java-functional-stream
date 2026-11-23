@@ -22,6 +22,45 @@ public class Task03Main {
             Comparator<? super T> order,
             BiConsumer<? super T, ? super T> minMaxConsumer) {
 
-        // your implementation here
+        class MinMax {
+            boolean empty = true;
+            T min;
+            T max;
+        }
+
+        MinMax result = stream.collect(
+                MinMax::new,
+                (r, value) -> {
+                    if (r.empty) {
+                        r.min = value;
+                        r.max = value;
+                        r.empty = false;
+                    } else {
+                        if (order.compare(value, r.min) < 0) {
+                            r.min = value;
+                        }
+                        if (order.compare(value, r.max) > 0) {
+                            r.max = value;
+                        }
+                    }
+                },
+                (a, b) -> {
+                    if (b.empty) return;
+                    if (a.empty) {
+                        a.min = b.min;
+                        a.max = b.max;
+                        a.empty = false;
+                    } else {
+                        if (order.compare(b.min, a.min) < 0) a.min = b.min;
+                        if (order.compare(b.max, a.max) > 0) a.max = b.max;
+                    }
+                }
+        );
+
+        if (result.empty) {
+            minMaxConsumer.accept(null, null);
+        } else {
+            minMaxConsumer.accept(result.min, result.max);
+        }
     }
 }
